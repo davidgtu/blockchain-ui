@@ -1,0 +1,23 @@
+// html {
+//   @include fluid-type(font-size, 320px, 1366px, 14px, 18px);
+// }
+
+body, html {
+  min-height: 100vh;
+}
+
+body {
+  // @extend %grid-bg;
+}
+
+.hidden {
+  display: none;
+}
+
+.grey-bg {
+  background-color: $sectionColor;
+}
+
+.section-padding {
+  padding: 30px 25px;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="/dist/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/dist/countUp.js" defer></script>
+    <script src="/js/listeners.js" defer></script>
+  </head>
+  <body>
+    <section class="chart--section section-padding">
+      <div class="container">
+        <h1 class="sub-header text-center text-uppercase chart__header">Currency Statistics</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <div class="chart-nav--container">
+                <ul class="chart-nav__list nav nav-pills nav-stacked">
+                  <button id="bitcoinCirculationButton" class="am-button chart-nav__button list-button active">Bitcoins in circulation</button>
+                  <button id="marketPriceButton" class="am-button list-button chart-nav__button">Market Price (USD)</button>
+                  <button id="capitalizationButton" class="am-button list-button chart-nav__button">Market Capitalization</button>
+                  <button id="exchangeRateButton" class="am-button list-button chart-nav__button">Exchange Rate Volume</button>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="chart--container">
+                <div class="chart-image--container">
+                  <img src="" alt="" class="chart__image img-fluid" id="chartImage">
+                </div>
+                <small id="chartText" class="chart-script__text">Loading...</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="popular-stats--section grey-bg section-padding">
+      <div class="container">
+        <h1 class="text-center text-uppercase sub-header stats__header">Popular Stats</h1>
+        <div class="popular-stats--container row">
+          <div class="col-sm-6 col-lg-3 stats--container">
+            <h2 class="stats__data stats--price" id="marketPrice"></h2>
+            <h3 class="stats__subscript">Across bitcoin exchanges</h3>
+            <p class="stats__description">Based on USD</p>
+          </div>
+          <div class="col-sm-6 col-lg-3 stats--container block-size--container">
+            <h2 class="stats__data stats--mb" id="averageBlockSize"></h2>
+            <h3 class="stats__subscript">Average Block Size</h3>
+            <p class="stats__description">Based on a 24 hour average</p>
+          </div>
+          <div class="col-sm-6 col-lg-3 stats--container">
+            <h2 class="stats__data stats--transaction" id="transactionsPerDay"></h2>
+            <h3 class="stats__subscript">Transactions per day</h3>
+            <p class="stats__description">The aggregate number of confirmed Bitcoin transactions in the past 24 hours.</p>
+          </div>
+          <div class="col-sm-6 col-lg-3 stats--container">
+            <h2 class="stats__data stats--byte" id="averageMempoolSize"></h2>
+            <h2 class="stats__subscript">pending confirmation</h2>
+            <p class="stats__description">The aggregate size of transactions waiting to be confirmed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="/js/app.js" defer=""></script>
+</html>

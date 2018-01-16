@@ -1,0 +1,222 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600|Open+Sans");
+.chart-nav--container .chart-nav__list .chart-nav__button {
+  font-family: 'Montserrat', sans-serif; }
+
+.am-button {
+  cursor: pointer;
+  font: inherit;
+  outline: none;
+  border: none;
+  padding: .4rem 1rem;
+  background-color: #e5f0f5;
+  color: black;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  border-radius: 2px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 600; }
+  .am-button:focus {
+    outline: none; }
+  .am-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 3px;
+    bottom: 3px;
+    width: 0;
+    background-color: #074a7a;
+    -webkit-transition: width 0.2s cubic-bezier(0, 0, 0.2, 1);
+    -o-transition: width 0.2s cubic-bezier(0, 0, 0.2, 1);
+    transition: width 0.2s cubic-bezier(0, 0, 0.2, 1); }
+  .am-button::after {
+    content: "";
+    display: none;
+    position: absolute;
+    background: #074a7a;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: -4px; }
+  .am-button:hover, .am-button:focus {
+    background-color: transparent;
+    color: white;
+    border-color: #074a7a; }
+    .am-button:hover::before, .am-button:focus::before {
+      width: 100%; }
+  .am-button.list-button {
+    text-align: left; }
+    @media only screen and (min-width: 992px) {
+      .am-button.list-button {
+        width: 250px; } }
+  .am-button.active {
+    background-color: transparent;
+    color: white;
+    border-color: #074a7a;
+    border-radius: 2px; }
+    .am-button.active::before {
+      width: 100%; }
+
+body, html {
+  min-height: 100vh; }
+
+.hidden {
+  display: none; }
+
+.grey-bg {
+  background-color: #f5f7f9; }
+
+.section-padding {
+  padding: 30px 25px; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif; }
+
+p, ul, li, a, small {
+  font-family: 'Open Sans', sans-serif; }
+
+.sub-header {
+  font-weight: 600; }
+
+.stats__header {
+  margin-bottom: 25px; }
+
+.stats--container {
+  border-right: 1px solid #efefef;
+  position: relative;
+  max-height: 25vh;
+  height: 22vh; }
+  @media only screen and (max-width: 767px) {
+    .stats--container {
+      text-align: center; } }
+  .stats--container .stats__data {
+    color: #074a7a; }
+    @media only screen and (min-width: 992px) {
+      .stats--container .stats__data {
+        margin-top: 7px; } }
+  .stats--container .stats__subscript {
+    margin-bottom: 25px; }
+    .stats--container .stats__subscript {
+      font-size: 12px; }
+    @media (min-width: 400px) and (max-width: 1000px) {
+      .stats--container .stats__subscript {
+        font-size: calc( 12px + num(14px)-num(12px) * (100vw - 400px) / num(1000px)-num(400px)); } }
+    @media (min-width: 1000px) {
+      .stats--container .stats__subscript {
+        font-size: 14px; } }
+  .stats--container:hover .stats__description:after {
+    height: 0%; }
+  .stats--container:last-child {
+    border-right: 0; }
+  @media only screen and (max-width: 991px) {
+    .stats--container.block-size--container {
+      border-right: none; } }
+  .stats--container .stats__data {
+    font-weight: 600; }
+    .stats--container .stats__data.stats--price:before {
+      content: "$"; }
+    .stats--container .stats__data.stats--mb:after {
+      content: " MB"; }
+      .stats--container .stats__data.stats--mb:after {
+        font-size: 18px; }
+      @media (min-width: 400px) and (max-width: 1000px) {
+        .stats--container .stats__data.stats--mb:after {
+          font-size: calc( 18px + num(10px)-num(18px) * (100vw - 400px) / num(1000px)-num(400px)); } }
+      @media (min-width: 1000px) {
+        .stats--container .stats__data.stats--mb:after {
+          font-size: 10px; } }
+    .stats--container .stats__data.stats--byte:after {
+      content: " bytes"; }
+      .stats--container .stats__data.stats--byte:after {
+        font-size: 18px; }
+      @media (min-width: 400px) and (max-width: 1000px) {
+        .stats--container .stats__data.stats--byte:after {
+          font-size: calc( 18px + num(10px)-num(18px) * (100vw - 400px) / num(1000px)-num(400px)); } }
+      @media (min-width: 1000px) {
+        .stats--container .stats__data.stats--byte:after {
+          font-size: 10px; } }
+  .stats--container .stats-description__foreground {
+    background: white;
+    position: absolute; }
+  .stats--container .stats-description--container {
+    position: relative; }
+  .stats--container .stats__description {
+    background-color: #074a7a;
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+    position: relative;
+    font-size: 10px;
+    width: 100%;
+    -webkit-transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+    -o-transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1); }
+    .stats--container .stats__description:before {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: -25px;
+      bottom: auto;
+      border: 15px solid;
+      border-color: transparent transparent #074a7a transparent;
+      left: 0;
+      right: 0;
+      margin: 0 auto; }
+      @media only screen and (min-width: 768px) {
+        .stats--container .stats__description:before {
+          right: auto;
+          left: 7px; } }
+    .stats--container .stats__description:after {
+      content: '';
+      background: #f5f7f9 !important;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      -webkit-transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
+      -o-transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
+      transition: all 0.2s cubic-bezier(0, 0, 0.2, 1); }
+
+.chart__header {
+  margin-bottom: 25px; }
+
+@media only screen and (max-width: 767px) {
+  .chart-nav--container {
+    margin-bottom: 25px; } }
+
+.chart-nav--container .chart-nav__list {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+  .chart-nav--container .chart-nav__list .chart-nav__button {
+    margin: 5px 0; }
+    @media only screen and (min-width: 768px) {
+      .chart-nav--container .chart-nav__list .chart-nav__button:first-child {
+        margin-top: -3px; } }
+
+.chart--container {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+  .chart--container .chart-script__text {
+    margin-top: 10px; }
+
+.chart-image--container {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 5px;
+  background-color: #074a7a; }

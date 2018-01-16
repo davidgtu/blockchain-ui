@@ -1,0 +1,40 @@
+.chart__header {
+  @include bottom-gutter(25px);
+}
+
+.chart-nav--container {
+  @include media(mobile) {
+    @include bottom-gutter(25px);
+  }
+
+  .chart-nav__list {
+    flex-direction: column;
+
+    .chart-nav__button {
+      margin: 5px 0;
+      @extend %primaryFont;
+
+      @include media(tablet-desktop) {
+        &:first-child {
+          margin-top:-3px;
+        }
+      }
+    }
+  }
+}
+
+.chart--container {
+  display: inline-flex;
+  flex-direction: column;
+
+  .chart-script__text {
+    @include top-gutter(10px);
+  }
+}
+
+.chart-image--container {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 5px;
+  background-color: $primaryColor;
+}
