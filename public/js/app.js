@@ -3,6 +3,21 @@ const blockSizeURL = "https://api.blockchain.info/charts/avg-block-size"
 const mempoolSizeURL = 'https://api.blockchain.info/charts/mempool-size';
 const averageBlockSizeURL = 'https://api.blockchain.info/charts/avg-block-size?timespan=5weeks&rollingAverage=24hours';
 
+const active = document.querySelector('.chart-nav__button.active').id;
+const chartImage = document.getElementById('chartImage');
+const chartText = document.getElementById('chartText');
+const chartLink = document.getElementById('chartLink');
+
+const bitcoinCirculationImage = "../images/total-bitcoins.png";
+const marketPriceImage = "../images/market-price.png";
+const tradeVolumeImage = "../images/trade-volume.png";
+const marketCapImage = "../images/market-cap.png";
+
+const bitcoinChart = "https://blockchain.info/charts/total-bitcoins";
+const marketLink = "https://blockchain.info/charts/market-price";
+const capitalizationLink = "https://blockchain.info/charts/market-cap";
+const tradeVolumeLink = "https://blockchain.info/charts/trade-volume";
+
 function getStats() {
   return axios.get(statsURL);
 }
@@ -93,28 +108,23 @@ function countUp(target, startVal, endVal, decimals, duration) {
   new CountUp(target, startVal, endVal, decimals, duration, options).start();
 }
 
-const active = document.querySelector('.chart-nav__button.active').id;
-const chartImage = document.getElementById('chartImage');
-const chartText = document.getElementById('chartText');
-
-const bitcoinCirculationImage = "../images/total-bitcoins.png";
-const marketPriceImage = "../images/market-price.png";
-const tradeVolumeImage = "../images/trade-volume.png";
-const marketCapImage = "../images/market-cap.png";
-
 function setChart(id) { // to make it reusable
   if (id === "bitcoinCirculationButton") {
     chartImage.src = bitcoinCirculationImage;
     chartText.textContent = "The total number of bitcoins that have already been mined."
+    chartLink.href = bitcoinChart;
   } else if (id === "marketPriceButton") {
     chartImage.src = marketPriceImage;
     chartText.textContent = "Average USD market price across major bitcoin exchanges."
+    chartLink.href = marketLink;
   } else if (id === "capitalizationButton") {
     chartImage.src = marketCapImage;
     chartText.textContent = "The total USD value of bitcoin supply in circulation."
+    chartLink.href = capitalizationLink;
   } else if (id === "exchangeRateButton") {
     chartImage.src = tradeVolumeImage;
     chartText.textContent = "The total USD value of trading volume on major bitcoin exchanges."
+    chartLink.href = tradeVolumeLink;
   }
 }
 
