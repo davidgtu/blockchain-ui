@@ -225,6 +225,9 @@ p, ul, li, a, small {
   flex-direction: column; }
   .chart--container .chart-script__text {
     margin-top: 10px; }
+    @media only screen and (min-width: 992px) {
+      .chart--container .chart-script__text {
+        width: 70%; } }
 
 .chart-image--container {
   display: -webkit-inline-box;

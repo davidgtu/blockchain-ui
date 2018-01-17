@@ -33,6 +33,9 @@
 
   .chart-script__text {
     @include top-gutter(10px);
+    @include media(desktop) {
+      width: 70%;
+    }
   }
 }
 
