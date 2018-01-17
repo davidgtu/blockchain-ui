@@ -68,15 +68,11 @@
 
   .stats-description__foreground {
     background: $white;
-    // height: 100%;
     position: absolute;
-    // width: 100%;
-    // overflow: auto;
   }
 
   .stats-description--container {
     position: relative;
-    // overflow: auto;
   }
 
   .stats__description {
@@ -87,7 +83,6 @@
     position: relative;
     font-size: 10px;
     width: 100%;
-    // @include box-shadow(1);
     transition: all 0.3s $cubicBezier;
 
     &:before {

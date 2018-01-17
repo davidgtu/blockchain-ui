@@ -1,13 +1,15 @@
-// html {
-//   @include fluid-type(font-size, 320px, 1366px, 14px, 18px);
-// }
-
 body, html {
   min-height: 100vh;
 }
 
-body {
-  // @extend %grid-bg;
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color:inherit;
+  }
 }
 
 .hidden {
@@ -22,6 +24,6 @@ body {
   padding: 30px 25px;
 }
 
-.no-list-style {
-  list-style: none;
+.section-offset {
+  @include top-gutter(5rem);
 }
