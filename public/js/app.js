@@ -178,25 +178,17 @@ function requestLiveChart(url) {
 
 function setChart(id) { // to make it reusable
   if (id === "bitcoinCirculationButton") {
-    // chartImage.src = bitcoinCirculationImage;
-    // chartText.textContent = "The total number of bitcoins that have already been mined."
-    // chartLink.href = bitcoinChart;
-    createChart('https://api.blockchain.info/charts/total-bitcoins')
+    createChart('https://api.blockchain.info/charts/total-bitcoins');
+    chartLink.href = "https://api.blockchain.info/charts/total-bitcoins";
   } else if (id === "marketPriceButton") {
-    // chartImage.src = marketPriceImage;
-    // chartText.textContent = "Average USD market price across major bitcoin exchanges."
-    // chartLink.href = marketLink;
-    createChart('https://api.blockchain.info/charts/market-price')
+    createChart('https://api.blockchain.info/charts/market-price');
+    chartLink.href = "https://api.blockchain.info/charts/market-price";
   } else if (id === "capitalizationButton") {
-    // chartImage.src = marketCapImage;
-    // chartText.textContent = "The total USD value of bitcoin supply in circulation."
-    // chartLink.href = capitalizationLink;
-    createChart('https://api.blockchain.info/charts/n-transactions')
+    createChart('https://api.blockchain.info/charts/n-transactions');
+    chartLink.href = "https://api.blockchain.info/charts/n-transactions";
   } else if (id === "exchangeRateButton") {
-    // chartImage.src = tradeVolumeImage;
-    // chartText.textContent = "The total USD value of trading volume on major bitcoin exchanges."
-    // chartLink.href = tradeVolumeLink;
-    createChart('https://api.blockchain.info/charts/n-transactions')
+    createChart('https://api.blockchain.info/charts/mempool-size');
+    chartLink.href = "https://api.blockchain.info/charts/mempool-size";
   }
 }
 
