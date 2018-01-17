@@ -69,6 +69,12 @@ a {
     text-decoration: none;
     color: inherit; }
 
+canvas {
+  max-width: 300px; }
+  @media only screen and (min-width: 992px) {
+    canvas {
+      max-width: 387px !important; } }
+
 .hidden {
   display: none; }
 

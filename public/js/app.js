@@ -130,12 +130,13 @@ function createChart(url) {
   requestLiveChart(url)
     .then(response => {
       ctx.style.backgroundColor = "white";
+      debugger
       let chart = new Chart(ctx, {
         type: 'line',
         data: {
           labels: getAxis("x", response.data.values),
           datasets: [{
-            label:'Bitcoins in Circulation',
+            label: response.data.name,
             data: getAxis('y', response.data. values),
             backgroundColor: [
               'rgba(7, 74, 122, 0.6)',
