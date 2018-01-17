@@ -27,6 +27,10 @@
   display: inline-flex;
   flex-direction: column;
 
+  @include media(tablet-desktop) {
+    margin-left: 2rem;
+  }
+
   .chart-script__text {
     @include top-gutter(10px);
   }
@@ -36,5 +40,6 @@
   display: inline-flex;
   flex-direction: column;
   padding: 5px;
+  border-radius: 2px;
   background-color: $primaryColor;
 }

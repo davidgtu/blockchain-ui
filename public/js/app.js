@@ -23,23 +23,30 @@ function getStats() {
 }
 
 function setMarketPrice() {
+  const marketPriceNode = document.getElementById('marketPrice');
   getStats()
     .then(response => {
       let price = response.data.market_price_usd;
-      const marketPriceNode = document.getElementById('marketPrice');
 
       countUp(marketPriceNode, 0, price, 2, 1);
-    });
+    })
+    .catch(error => {
+      console.error(error);
+      countUp(marketPriceNode, 0, 11324.13, 2, 1); // fake data. not sure how to handle this case regarding cross-origin failing
+    })
 }
 
 function setTransactionsPerDay() {
+  const transactionNode = document.getElementById('transactionsPerDay');
   getStats()
     .then(response => {
       let transactionNum = response.data.n_tx;
-      const transactionNode = document.getElementById('transactionsPerDay');
 
       countUp(transactionNode, 0, transactionNum, 0, 1);
-    });
+    })
+    .catch(error => {
+      countUp(transactionNode, 0, 314220, 0, 1);
+    })
 }
 
 function requestBlockSize() {
@@ -59,7 +66,7 @@ function calculateChartAverage(url, node) {
       responseValues.map(object => {
         let yAxisValues = object.y;
         valueArray.push(yAxisValues);
-      });
+      })
 
       let calculatedAverage = calcuteAverage(valueArray);
       let chartNode = document.getElementById(node)
@@ -69,7 +76,16 @@ function calculateChartAverage(url, node) {
       } else if (node === 'averageMempoolSize') {
         countUp(chartNode, 0, calculatedAverage, 0, 1)
       }
-    });
+    })
+    .catch(error => {
+      let chartNode = document.getElementById(node);
+      if (node === "averageMempoolSize") {
+        countUp(chartNode, 0, 112537918, 0, 1)
+      } else if (node === 'averageBlockSize') {
+        countUp(chartNode, 0 , 1.05, 2, 1)
+      }
+      console.error(error);
+    })
 }
 
 function calcuteAverage(arr) {
@@ -108,7 +124,83 @@ function countUp(target, startVal, endVal, decimals, duration) {
   new CountUp(target, startVal, endVal, decimals, duration, options).start();
 }
 
+const ctx = document.getElementById('myChart');
+
+function createChart(url) {
+  requestLiveChart(url)
+    .then(response => {
+      ctx.style.backgroundColor = "white";
+      let chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: getAxis("x", response.data.values),
+          datasets: [{
+            label:'Bitcoins in Circulation',
+            data: getAxis('y', response.data. values),
+            backgroundColor: [
+              'rgba(7, 74, 122, 0.6)',
+              'rgba(7, 74, 122, 0.9)'
+            ],
+            borderWidth: 1,
+          }]
+        },
+        options: {
+          responsive: true
+        }
+      });
+
+      chartText.textContent = response.data.description;
+    })
+    .catch(error => {
+      if (!ctx.classList.contains('hidden')) {
+        ctx.classList.add('hidden');
+        chartImage.classList.remove('hidden');
+      }
+      setBackupChart(document.querySelector('.chart-nav__button.active').id);
+    })
+}
+
+function getAxis(axis ,arr) {
+  if (axis === "x") {
+    return arr.map(values => {
+      return values.x;
+    });
+  } else if (axis === "y") {
+    return arr.map(values => {
+      return values.y;
+    });
+  }
+}
+
+function requestLiveChart(url) {
+  return axios.get(url);
+}
+
 function setChart(id) { // to make it reusable
+  if (id === "bitcoinCirculationButton") {
+    // chartImage.src = bitcoinCirculationImage;
+    // chartText.textContent = "The total number of bitcoins that have already been mined."
+    // chartLink.href = bitcoinChart;
+    createChart('https://api.blockchain.info/charts/total-bitcoins')
+  } else if (id === "marketPriceButton") {
+    // chartImage.src = marketPriceImage;
+    // chartText.textContent = "Average USD market price across major bitcoin exchanges."
+    // chartLink.href = marketLink;
+    createChart('https://api.blockchain.info/charts/market-price')
+  } else if (id === "capitalizationButton") {
+    // chartImage.src = marketCapImage;
+    // chartText.textContent = "The total USD value of bitcoin supply in circulation."
+    // chartLink.href = capitalizationLink;
+    createChart('https://api.blockchain.info/charts/n-transactions')
+  } else if (id === "exchangeRateButton") {
+    // chartImage.src = tradeVolumeImage;
+    // chartText.textContent = "The total USD value of trading volume on major bitcoin exchanges."
+    // chartLink.href = tradeVolumeLink;
+    createChart('https://api.blockchain.info/charts/n-transactions')
+  }
+}
+
+function setBackupChart(id) {
   if (id === "bitcoinCirculationButton") {
     chartImage.src = bitcoinCirculationImage;
     chartText.textContent = "The total number of bitcoins that have already been mined."

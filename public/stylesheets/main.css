@@ -72,6 +72,12 @@ a {
     text-decoration: none;
     color: inherit; }
 
+canvas {
+  max-width: 300px; }
+  @media only screen and (min-width: 992px) {
+    canvas {
+      max-width: 400px; } }
+
 .hidden {
   display: none; }
 
@@ -220,6 +226,9 @@ p, ul, li, a, small {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column; }
+  @media only screen and (min-width: 768px) {
+    .chart--container {
+      margin-left: 2rem; } }
   .chart--container .chart-script__text {
     margin-top: 10px; }
 
@@ -232,4 +241,5 @@ p, ul, li, a, small {
   -ms-flex-direction: column;
   flex-direction: column;
   padding: 5px;
+  border-radius: 2px;
   background-color: #074a7a; }

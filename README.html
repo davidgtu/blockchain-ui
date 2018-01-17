@@ -7,12 +7,27 @@
         <h1 id="blockchain-ui">Blockchain UI</h1>
 <p>This is hosted for your convenience: <a href="https://blockchain-challenge.firebaseapp.com/">https://blockchain-challenge.firebaseapp.com/</a></p>
 <p>Because of <code>No &#39;Access-Control-Allow-Origin&#39;</code> problems, I&#39;ve attached a gif of it working:</p>
-<p><img src="https://i.gyazo.com/cdf3acccb50ee223899d0a461659125c.gif" alt=""></p>
+<p>If you want, please install this chrome extensive and turn on CORS to be able to see the app for yourself:
+<a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en">https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en</a></p>
+<p>Otherwise, here&#39;s how it looks with cross-origin enabled:
+<a href="https://gyazo.com/a940d8299792125ccc28093c05a0360c"><img src="https://i.gyazo.com/a940d8299792125ccc28093c05a0360c.gif" alt="https://gyazo.com/a940d8299792125ccc28093c05a0360c"></a></p>
+<p>And here&#39;s without:
+<a href="https://gyazo.com/da14c0962a1ebd9d7073f04fce05f51c"><img src="https://i.gyazo.com/da14c0962a1ebd9d7073f04fce05f51c.gif" alt="https://gyazo.com/da14c0962a1ebd9d7073f04fce05f51c"></a></p>
+<p>Because of cross origin problems, I fell back on making fake data and the thumbnails. Otherwise, with cross-origin enabled, the charts and data are all real-time.</p>
 <h3 id="running">Running</h3>
 <p>This was ran locally on firebase. If you&#39;d like, clone, then run it with <code>firebase init</code>, and <code>firebase serve</code> if you want to run it locally as well.</p>
 <h3 id="thoughts">Thoughts</h3>
 <p>Originally, I wanted to use React for this, but I wanted to really showcase my UX/UI development. That said, I would know how to approach this if given more time.</p>
-<p>I also wanted to take the chart X, Y data from the API call, but there was the whole problem with cors.</p>
+<h3 id="process">Process</h3>
+<h6 id="css">CSS</h6>
+<p>When it comes to CSS, I choose SCSS to get the job done. Using <a href="https://prepros.io/">Prepros</a> as my pre-processor, I&#39;m able to use modular styling to keep things organized.</p>
+<p>When it comes to classes, I try to keep my naming conventions close to <a href="http://getbem.com/naming/">BEM</a>.</p>
+<h6 id="html">HTML</h6>
+<p>This was built with semantic markdown in thought. I am a big proponent of being able to read html and visualize it without compiling it.</p>
+<h6 id="javascript">JavaScript</h6>
+<p>This is just vanilla JavaScript. I tried to keep things as DRY as possible by breaking things down into functions.</p>
+<p>Originally, I wanted to use React, but as per the challenge, I wanted to build a UI first. I would be 1000% happy to build it in React if necessary.</p>
+<p>I used <code>axios</code> as my XMLHttpRequest. <code>fetch</code> is also nice, but <code>axios</code> just feels more simple. There is the concern of <code>No &#39;Access-Control-Allow-Origin&#39;</code>, but after hours of debugging, I want to determine and say it&#39;s the endpoint rather than the request itself.</p>
 
       </body>
     </html>
