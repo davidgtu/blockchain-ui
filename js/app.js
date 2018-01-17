@@ -130,7 +130,6 @@ function createChart(url) {
   requestLiveChart(url)
     .then(response => {
       ctx.style.backgroundColor = "white";
-      debugger
       let chart = new Chart(ctx, {
         type: 'line',
         data: {
