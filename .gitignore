@@ -1,1 +1,7 @@
 prepros-6.config
+.firebaserc
+.DS_Store
+firebase.json
+firebase-debug.log
+storage.rules
+functions

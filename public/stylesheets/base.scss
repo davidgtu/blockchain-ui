@@ -22,6 +22,6 @@ body {
   padding: 30px 25px;
 }
 
-.no-list-style {
-  list-style: none;
+.section-offset {
+  @include top-gutter(5rem);
 }

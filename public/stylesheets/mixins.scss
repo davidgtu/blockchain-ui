@@ -1,0 +1,99 @@
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  @each $property in $properties {
+    #{$property}: $min-value;
+  }
+
+  @media screen and (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+    }
+  }
+
+  @media screen and (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin bottom-gutter($px) {
+  margin-bottom: $px;
+}
+
+@mixin top-gutter($px) {
+  margin-top: $px;
+}
+
+@mixin box_shadow ($level) {
+  @if $level == 0 {
+    box-shadow: none;
+  } @else if $level == 1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  } @else if $level == 2 {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  } @else if $level == 3 {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  } @else if $level == 4 {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  } @else if $level == 5 {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  }
+}
+
+$font-lock-min:  400px !default;
+$font-lock-max: 1000px !default;
+
+@mixin font-size(
+  $min,                         // font-size
+  $max: null,                   // optional maximum font size
+  $lock-min: $font-lock-min,  // optional minimum viewport width
+  $lock-max: $font-lock-max   // optional maximum viewport width
+  ){
+    & { font-size: $min; }
+    @if $max {
+      @media (min-width: $lock-min) and (max-width: $lock-max){
+        & {
+          font-size: calc(
+            #{$min} +
+            #{num($max) - num($min)} *
+            (100vw - #{$lock-min}) /
+            #{num($lock-max) - num($lock-min)}
+          );
+        }
+      }
+      @media (min-width: $lock-max){
+        & { font-size: $max; }
+      }
+    }
+}
+
+@mixin flex($vertical, $horizontal, $direction:row) {
+	display: flex;
+	align-items: $vertical;
+	justify-content: $horizontal;
+	flex-direction: $direction;
+}
+
+@mixin media($type) {
+  @if $type == mobile {
+    @media only screen and (max-width: 767px) {
+      @content;
+    }
+  } @else if $type == mobile-tablet {
+    @media only screen and (max-width: 991px) {
+      @content;
+    }
+  } @else if $type == desktop {
+    @media only screen and (min-width: 992px) {
+      @content;
+    }
+  } @else if $type == tablet-desktop {
+    @media only screen and (min-width: 768px) {
+      @content;
+    }
+  }
+}
