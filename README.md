@@ -13,6 +13,9 @@ Otherwise, here's how it looks with cross-origin enabled:
 And here's without:
 [![https://gyazo.com/da14c0962a1ebd9d7073f04fce05f51c](https://i.gyazo.com/da14c0962a1ebd9d7073f04fce05f51c.gif)](https://gyazo.com/da14c0962a1ebd9d7073f04fce05f51c)
 
+You'll also find that it's responsive:
+[![https://gyazo.com/c5836dca2125d82235e600eeff202017](https://i.gyazo.com/c5836dca2125d82235e600eeff202017.gif)](https://gyazo.com/c5836dca2125d82235e600eeff202017)
+
 Because of cross origin problems, I fell back on making fake data and the thumbnails. Otherwise, with cross-origin enabled, the charts and data are all real-time.
 ### Running
 
