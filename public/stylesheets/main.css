@@ -76,7 +76,7 @@ canvas {
   max-width: 300px; }
   @media only screen and (min-width: 992px) {
     canvas {
-      max-width: 400px; } }
+      max-width: 387px !important; } }
 
 .hidden {
   display: none; }
