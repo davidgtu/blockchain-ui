@@ -130,13 +130,14 @@ function createChart(url) {
   requestLiveChart(url)
     .then(response => {
       ctx.style.backgroundColor = "white";
+      const {name, description, values} = response.data;
       let chart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: getAxis("x", response.data.values),
+          labels: getAxis("x", values),
           datasets: [{
-            label: response.data.name,
-            data: getAxis('y', response.data. values),
+            label: name,
+            data: getAxis('y', values),
             backgroundColor: [
               'rgba(7, 74, 122, 0.6)',
               'rgba(7, 74, 122, 0.9)'
@@ -149,7 +150,7 @@ function createChart(url) {
         }
       });
 
-      chartText.textContent = response.data.description;
+      chartText.textContent = description;
     })
     .catch(error => {
       if (!ctx.classList.contains('hidden')) {
